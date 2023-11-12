@@ -49,7 +49,9 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {}
+function getAverage(value1, value2) {
+  return value1 / 2 + value2 / 2;
+}
 
 /**
  * Returns a distance between two points by cartesian coordinates.
@@ -566,7 +568,10 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return (x1 + x2 + x3).toFixed();
+  if (x1 < 1 || x2 < 1 || x3 < 1) {
+    return (x1 + x2 + x3).toFixed(1);
+  }
+  return x1 + x2 + x3;
 }
 
 /**
@@ -581,8 +586,8 @@ function getSumOfNumbers(x1, x2, x3) {
  * -5, -6 => -5
  * 0, 5   => 5
  */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+function getMaxNumber(firstNumber, secondNumber) {
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -597,8 +602,10 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  const minimum = Math.ceil(min);
+  const maximum = Math.floor(max);
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 }
 
 /**
@@ -611,8 +618,8 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  return Math.hypot(a, b);
 }
 
 /**
@@ -628,8 +635,14 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let sum = 0;
+  for (let i = 0; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) {
+      sum += 1;
+    }
+  }
+  return sum;
 }
 
 module.exports = {
